@@ -9,7 +9,9 @@ function AdminDashboard() {
   const user = { username: username, email: "admin@project.com" };
 
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
     navigate("/login");
   };
 

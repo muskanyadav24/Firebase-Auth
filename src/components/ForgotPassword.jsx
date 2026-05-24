@@ -27,8 +27,14 @@ function ForgotPassword() {
     setError("");
 
     const registeredEmail = localStorage.getItem("registeredEmail");
-    if (!registeredEmail || formData.email.trim().toLowerCase() !== registeredEmail.trim().toLowerCase()) {
-      setError("Email not registered!");
+    
+    if (!registeredEmail) {
+      setError("No registered user found in local storage. Please sign up first.");
+      return;
+    }
+
+    if (formData.email.trim().toLowerCase() !== registeredEmail.trim().toLowerCase()) {
+      setError("Email not registered or incorrect!");
       return;
     }
 
